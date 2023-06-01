@@ -48,5 +48,6 @@
     // }
 
     echo shell_exec("sh -x git-pull.sh");
+    echo "test";
 
 ?>
