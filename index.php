@@ -117,7 +117,7 @@
         {
             $ch = curl_init();
 
-            $url = "https://api.github.com/repos/%s/%s/merge-upstream";
+            $url = "https://api.github.com/repos/%s/%s/merges";
             $url = sprintf($url, $this->owner, $this->repo);
 
             curl_setopt($ch, CURLOPT_URL, $url);
