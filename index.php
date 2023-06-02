@@ -145,7 +145,7 @@
 
     $git = new Git();
 
-    $output = $git->mergeBranch('new-1', 'main');
+    $output = $git->syncForkBranch('new');
 
     print_r($output);
 
