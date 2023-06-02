@@ -57,7 +57,7 @@
 
         public function __construct()
         {
-            $this->token = "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";
+            $this->token = "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";
             $this->owner = "umbra-byron-manalo";
             $this->repo = "file-download";
         }
@@ -145,7 +145,7 @@
 
     $git = new Git();
 
-    $output = $git->syncForkBranch('new');
+    $output = $git->mergeBranch('test-new', 'main');
 
     print_r($output);
 
