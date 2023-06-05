@@ -9,7 +9,7 @@
 
         public function  __construct(string $repoName)
         {
-            $this->token = "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";
+            $this->token = "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";
             $this->owner = "umbra-byron-manalo";
             $this->repo = $repoName;
         }
@@ -80,26 +80,30 @@
     $pullRequest = $git->createPullRequest('test-1');
 
     if(!!$pullRequest) {
-        
-        if(isset($pullRequest->message) &&  $pullRequest->message == 'Validation Failed') {
-            print_r($pullRequest->errors[0]->message);
+        if(isset($pullRequest->message) && $pullRequest->message == 'Validation Failed') {
+            echo $pullRequest->errors[0]->message;
+
+            return;
+        }
+
+        if(isset($pullRequest->message) && $pullRequest->message == 'Bad credentials') {
+            echo "GitHub personal token was expired, please generate a new one.";
 
             return;
         } 
-        
-        if(!!$pullRequest && $pullRequest->number) {
-            $mergePullRequest = $git->mergePullRequest($pullRequest->number);
-
-            print_r($mergePullRequest);
-        }
 
         if(isset($pullRequest->number)) {
             $mergePullRequest = $git->mergePullRequest($pullRequest->number);
 
-            print_r($mergePullRequest);
+            if(isset($mergePullRequest->merged) && !!$pullRequest->merged) {
+                if(isset($mergePullRequest->message)) {
+                    echo $mergePullRequest->message;
+
+                    return;
+                }
+            }
         } 
 
-        
     }
     
 
