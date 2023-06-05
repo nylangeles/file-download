@@ -9,7 +9,7 @@
 
         public function  __construct(string $repoName)
         {
-            $this->token = "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";
+            $this->token = "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";
             $this->owner = "umbra-byron-manalo";
             $this->repo = $repoName;
         }
