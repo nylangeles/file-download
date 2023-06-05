@@ -52,7 +52,9 @@
     $git = new Git('file-download');
     
     
-    $git->createPullRequest('test-1');
+    $result = $git->createPullRequest('test-1');
+
+    print_r($result);
     
 
 ?>
