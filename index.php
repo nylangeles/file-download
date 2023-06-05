@@ -14,7 +14,7 @@
             $this->repo = $repoName;
         }
 
-        public function createPullRequest(string $master = 'main', string $remote)
+        public function createPullRequest(string $remote, string $master = 'main')
         {
             $ch = curl_init();
 
@@ -51,6 +51,8 @@
 
     $git = new Git('file-download');
     
+    
+    $git->createPullRequest('test-1');
     
 
 ?>
