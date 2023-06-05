@@ -9,7 +9,7 @@
 
         public function  __construct(string $repoName)
         {
-            $this->token = "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";
+            $this->token = "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";
             $this->owner = "umbra-byron-manalo";
             $this->repo = $repoName;
         }
@@ -82,7 +82,7 @@
     // print_r($result);
 
     if(!!$pullRequest) {
-        if($pullRequest->number) {
+        if(!!$pullRequest && $pullRequest->number) {
             $mergePullRequest = $git->mergePullRequest($pullRequest->number);
 
             print_r($mergePullRequest);
