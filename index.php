@@ -9,7 +9,7 @@
 
         public function  __construct(string $repoName)
         {
-            $this->token = "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";
+            $this->token = "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";
             $this->owner = "umbra-byron-manalo";
             $this->repo = $repoName;
         }
@@ -79,14 +79,25 @@
     
     $pullRequest = $git->createPullRequest('test-1');
 
-    // print_r($result);
-
     if(!!$pullRequest) {
+        
+        if(isset($pullRequest->message) &&  $pullRequest->message == 'Validation Failed') {
+            print_r($pullRequest->errors[0]->message);
+
+            return;
+        } 
+        
         if(!!$pullRequest && $pullRequest->number) {
             $mergePullRequest = $git->mergePullRequest($pullRequest->number);
 
             print_r($mergePullRequest);
         }
+
+        if(isset($pullRequest->number)) {
+            $mergePullRequest = $git->mergePullRequest($pullRequest->number);
+
+            print_r($mergePullRequest);
+        } 
 
         
     }
