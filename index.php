@@ -55,7 +55,7 @@
         protected $owner;
         protected $repo;
 
-        public function  ()
+        public function  __construct()
         {
             $this->token = "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";
             $this->owner = "umbra-byron-manalo";
