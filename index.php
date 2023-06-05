@@ -9,7 +9,7 @@
 
         public function  __construct(string $repoName)
         {
-            $this->token = "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";
+            $this->token = "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";
             $this->owner = "umbra-byron-manalo";
             $this->repo = $repoName;
         }
@@ -40,21 +40,54 @@
             }
             curl_close($ch);
 
-            return $result;
+            return json_decode($result);
         }
 
-        public function mergePullRequest()
+        public function mergePullRequest(int $pullReferenceNumber)
         {
+            $ch = curl_init();
 
+            $url = "https://api.github.com/repos/%s/%s/pulls/$pullReferenceNumber/merge";
+            $url = sprintf($url, $this->owner, $this->repo);
+
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"commit_title\":\"Branch Update\",\"commit_message\":\"Branch Update\"}");
+
+            $headers = array();
+            $headers[] = 'Accept: application/vnd.github+json';
+            $headers[] = 'Authorization: Bearer ' . $this->token;
+            $headers[] = 'X-Github-Api-Version: 2022-11-28';
+            $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+            $headers[] = 'User-Agent: ' . $this->repo;
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                echo 'Error:' . curl_error($ch);
+            }
+            curl_close($ch);
+
+            return json_decode($result);
         }
     }
 
     $git = new Git('file-download');
     
     
-    $result = $git->createPullRequest('test-1');
+    $pullRequest = $git->createPullRequest('test-1');
 
-    print_r($result);
+    // print_r($result);
+
+    if(!!$pullRequest) {
+        $pullRequest = (object) $pullRequest;
+
+        // $git->mergePullRequest($pullRequest->number);
+
+        echo $pullRequest->number;
+    }
     
 
 ?>
