@@ -9,7 +9,7 @@
 
         public function  __construct(string $repoName)
         {
-            $this->token = "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";
+            $this->token = "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";
             $this->owner = "umbra-byron-manalo";
             $this->repo = $repoName;
         }
@@ -24,7 +24,7 @@
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"title\":\"Amazing new feature\",\"body\":\"Please pull these awesome changes in!\",\"head\":\"$master\",\"base\":\"$remote\"}");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"title\":\"Branch update from main branch.\",\"body\":\"Pull changes form main branch\",\"head\":\"$master\",\"base\":\"$remote\"}");
 
             $headers = array();
             $headers[] = 'Accept: application/vnd.github+json';
