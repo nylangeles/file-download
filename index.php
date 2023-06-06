@@ -132,7 +132,7 @@
 
     // $branches = $git->getBranches();
 
-    echo exec("sh -x git-pull.sh 2>&1", $output);
+    echo exec("sh -x git-pull.sh", $output);
     echo implode('\n', $output);
     echo "Testing...";
 ?>
