@@ -2,4 +2,4 @@
 
 cd ./
 
-git pull origin main
+git --version
