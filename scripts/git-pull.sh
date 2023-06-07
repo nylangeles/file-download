@@ -1,5 +1,7 @@
 #!/bin/bash
 
-cd ./
+cd .
 
-git pull origin main
+# git pull origin main
+
+ls
