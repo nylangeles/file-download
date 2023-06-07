@@ -43,7 +43,7 @@
 
     if(array_key_exists('pull', $_POST)){
         $command = new Command();
-        $command->execute("rm -f .git/FETCH_HEAD");
+        // $command->execute("rm -f .git/FETCH_HEAD");
         $result = $command->execute("git pull origin main");
 
         print_r($result);
