@@ -44,7 +44,6 @@
     if(array_key_exists('pull', $_POST)){
         $command = new Command();
         $result = $command->execute("git pull");
-
         print_r($result);
     }
 ?>
@@ -55,11 +54,8 @@
 <title>GitHub Pull</title>
 </head>
 <body>
-    
-
     <form method="post">
         <input type="submit" name="pull" id="pull" value="Update" /><br/>
     </form>
-
 </body>
 </html>
