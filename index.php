@@ -43,7 +43,7 @@
 
     if(array_key_exists('pull', $_POST)){
         $command = new Command();
-        $result = $command->execute("git pull");
+        $result = $command->execute("git pull origin main");
         print_r($result);
     }
 ?>
