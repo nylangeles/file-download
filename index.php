@@ -1,17 +1,4 @@
 <?php
-    // echo exec("sh -x git-pull.sh", $output);
-    // echo implode('\n', $output);
-
-    // $output = exec('git pull', $outputLines, $returnCode);
-
-    // if ($returnCode === 0) {
-    //     echo "Git pull successful!";
-    // } else {
-    //     echo "Git pull failed!";
-    // }
-
-    // echo implode(PHP_EOL, $outputLines);
-
     class Command {
         public function execute($cmd, $workdir = null) {
 
@@ -43,7 +30,7 @@
 
     if(array_key_exists('pull', $_POST)){
         $command = new Command();
-        $command->execute("rm -f .git/FETCH_HEAD");
+        // $command->execute("rm -f .git/FETCH_HEAD");
         $result = $command->execute("git pull origin main");
 
         print_r($result);
